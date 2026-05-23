@@ -1,0 +1,726 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --color-bg: #0a0a0b;
+  --color-panel: #111113;
+  --color-border: rgba(239, 68, 68, 0.35);
+  --color-muted: #8a8a93;
+  --color-mutedStrong: #5a5a63;
+  --color-fg: #e6e6e8;
+  --color-accent: #ef4444;
+  --color-accentDim: #7f1d1d;
+  --color-positive: #22c55e;
+  --grid-line: rgba(239, 68, 68, 0.05);
+  --bg-mix: rgba(10, 10, 11, 0.7);
+  --shine-overlay: rgba(255, 255, 255, 0.35);
+  --card-glow-bg: rgba(17, 17, 19, 0.3);
+  --overlay-bg: rgba(10, 10, 11, 0.92);
+  --rain-trail: rgba(10, 10, 11, 0.16);
+}
+
+html.light {
+  color-scheme: light;
+  --color-bg: #fbf8f6;
+  --color-panel: #ffffff;
+  --color-border: rgba(220, 38, 38, 0.45);
+  --color-muted: #52525b;
+  --color-mutedStrong: #71717a;
+  --color-fg: #141416;
+  --color-accent: #dc2626;
+  --color-accentDim: #fecaca;
+  --color-positive: #16a34a;
+  --grid-line: transparent;
+  --bg-mix: rgba(251, 248, 246, 0.8);
+  --shine-overlay: rgba(0, 0, 0, 0.18);
+  --card-glow-bg: rgba(255, 255, 255, 0.5);
+  --overlay-bg: rgba(251, 248, 246, 0.92);
+  --rain-trail: rgba(251, 248, 246, 0.16);
+}
+
+html.light body {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      1100px circle at 15% -10%,
+      rgba(220, 38, 38, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px circle at 85% 110%,
+      rgba(220, 38, 38, 0.06),
+      transparent 55%
+    );
+  background-attachment: fixed;
+}
+html.light .grid-bg {
+  background-image: none;
+  animation: none;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ───────── Backdrop layers ───────── */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.radial-fade {
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
+
+/* Floating ambient red glow orbs */
+.hero-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(239, 68, 68, 0.14) 0%,
+    rgba(239, 68, 68, 0.03) 40%,
+    transparent 70%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  animation: orbit 22s ease-in-out infinite;
+}
+@keyframes orbit {
+  0%, 100% { transform: translate(-40%, -20%) scale(1); }
+  33% { transform: translate(10%, -30%) scale(1.15); }
+  66% { transform: translate(-20%, 20%) scale(0.9); }
+}
+
+/* ───────── Scanline sweep ───────── */
+.scanline {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.scanline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(239, 68, 68, 0.45),
+    rgba(239, 68, 68, 0.15),
+    transparent
+  );
+  animation: scan 10s linear infinite;
+}
+@keyframes scan {
+  0% { top: -10%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+/* Crosshair reticle */
+.reticle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: reticleSpin 26s linear infinite;
+}
+.reticle::before,
+.reticle::after {
+  content: "";
+  position: absolute;
+  background: rgba(239, 68, 68, 0.6);
+}
+.reticle::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+.reticle::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+@keyframes reticleSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Section entry glitch: RGB-split shudder on section heading as it enters view */
+.section-glitch-in {
+  animation: sectionGlitchIn 0.55s steps(6, end);
+  display: inline-block;
+  position: relative;
+}
+@keyframes sectionGlitchIn {
+  0% {
+    color: #ef4444;
+    text-shadow:
+      3px 0 rgba(239, 68, 68, 0.9),
+      -3px 0 rgba(34, 197, 94, 0.7);
+    transform: translateX(0) skewX(-2deg);
+    clip-path: inset(0 0 0 0);
+  }
+  15% {
+    color: #22c55e;
+    text-shadow:
+      -4px 0 rgba(239, 68, 68, 0.95),
+      4px 0 rgba(34, 197, 94, 0.8);
+    transform: translateX(2px) skewX(3deg);
+    clip-path: inset(40% 0 0 0);
+  }
+  30% {
+    text-shadow:
+      5px 0 rgba(239, 68, 68, 0.8),
+      -5px 0 rgba(34, 197, 94, 0.6);
+    transform: translateX(-3px) skewX(-1deg);
+    clip-path: inset(0 0 40% 0);
+  }
+  50% {
+    color: #ef4444;
+    text-shadow:
+      -2px 0 rgba(239, 68, 68, 0.7),
+      2px 0 rgba(34, 197, 94, 0.5);
+    transform: translateX(1px);
+  }
+  75% {
+    text-shadow:
+      3px 0 rgba(239, 68, 68, 0.5),
+      -3px 0 rgba(34, 197, 94, 0.3);
+    transform: translateX(-1px);
+  }
+  100% {
+    color: inherit;
+    text-shadow: none;
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ───────── Glitch hover on name ───────── */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.glitch:hover::before {
+  color: #ef4444;
+  opacity: 0.9;
+  transform: translate(-2px, 0);
+  animation: glitchA 0.45s steps(2, end) infinite;
+  mix-blend-mode: screen;
+}
+.glitch:hover::after {
+  color: #3b82f6;
+  opacity: 0.8;
+  transform: translate(2px, 0);
+  animation: glitchB 0.45s steps(2, end) infinite;
+  mix-blend-mode: screen;
+}
+@keyframes glitchA {
+  0%, 100% { clip-path: inset(0 0 0 0); }
+  20% { clip-path: inset(20% 0 55% 0); }
+  40% { clip-path: inset(60% 0 15% 0); }
+  60% { clip-path: inset(10% 0 75% 0); }
+  80% { clip-path: inset(80% 0 5% 0); }
+}
+@keyframes glitchB {
+  0%, 100% { clip-path: inset(0 0 0 0); }
+  25% { clip-path: inset(50% 0 25% 0); }
+  50% { clip-path: inset(15% 0 65% 0); }
+  75% { clip-path: inset(70% 0 10% 0); }
+}
+
+/* ───────── Reveal on scroll ───────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ───────── Section heading ───────── */
+.section-heading::before {
+  content: "//";
+  color: #ef4444;
+  margin-right: 0.5rem;
+  font-family: ui-monospace, monospace;
+  animation: pulseDim 2.5s ease-in-out infinite;
+}
+@keyframes pulseDim {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* ───────── Timeline line draw-in ───────── */
+.timeline-line {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.timeline-line.in {
+  transform: scaleY(1);
+}
+
+/* ───────── Chips ───────── */
+.chip {
+  transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+.chip:hover {
+  transform: translateY(-2px);
+}
+
+/* ───────── Pulsing status dot ───────── */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  animation: pulseRing 2s ease-out infinite;
+}
+.pulse-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: pulseRingGreen 2.4s ease-out infinite;
+}
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+@keyframes pulseRingGreen {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* ───────── Nav active indicator ───────── */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #ef4444;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--color-fg);
+}
+
+/* ───────── Hero CTA shine ───────── */
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -120%;
+  width: 60%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--shine-overlay),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  z-index: 1;
+}
+.shine:hover::after {
+  left: 130%;
+}
+
+/* ───────── Scroll cue ───────── */
+@keyframes floatDown {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.45; }
+  50% { transform: translate(-50%, 6px); opacity: 1; }
+}
+.scroll-cue {
+  animation: floatDown 2.2s ease-in-out infinite;
+}
+
+/* ───────── Binary rain canvas ───────── */
+.binary-rain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* ───────── Terminal caret ───────── */
+.caret {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: #ef4444;
+  vertical-align: text-bottom;
+  animation: caret 0.9s steps(2, end) infinite;
+  margin-left: 2px;
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+/* ───────── Hero photo frame: subtle red corner ticks ───────── */
+.hero-photo-frame::before,
+.hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-accent);
+  pointer-events: none;
+}
+.hero-photo-frame::before {
+  top: -6px;
+  left: -6px;
+  border-right: none;
+  border-bottom: none;
+}
+.hero-photo-frame::after {
+  bottom: -6px;
+  right: -6px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ───────── Port scan reveal on skill chips ───────── */
+@keyframes chipScan {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ───────── Marquee packets in footer ───────── */
+@keyframes packetMove {
+  0% { transform: translateX(-20px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(calc(100% + 20px)); opacity: 0; }
+}
+.packet {
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background: #ef4444;
+  border-radius: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: packetMove 3.5s linear infinite;
+}
+.packet.green {
+  background: #22c55e;
+}
+
+/* Project card cursor glow */
+.card-glow {
+  background:
+    radial-gradient(
+      360px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(239, 68, 68, 0.1),
+      transparent 40%
+    ),
+    var(--card-glow-bg);
+}
+
+/* ───────── Custom crosshair cursor ───────── */
+.crosshair {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+  will-change: transform;
+}
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  background: #ef4444;
+}
+.crosshair::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+.crosshair::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.crosshair-visible {
+  opacity: 0.8;
+}
+.crosshair-active {
+  width: 34px;
+  height: 34px;
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6));
+}
+
+@media (hover: none), (pointer: coarse) {
+  .crosshair {
+    display: none !important;
+  }
+}
+
+/* ───────── Terminal panel animation ───────── */
+.terminal-panel {
+  animation: termUp 0.28s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+@keyframes termUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.terminal-backdrop {
+  animation: fadeIn 0.2s ease-out both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ───────── Konami overlay ───────── */
+.konami-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background:
+    radial-gradient(circle at center, rgba(239, 68, 68, 0.18), transparent 60%),
+    var(--overlay-bg);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: fadeIn 0.2s ease-out both, fadeOut 0.4s ease-in 3.2s forwards;
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+.konami-scan {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(239, 68, 68, 0.08) 0,
+      rgba(239, 68, 68, 0.08) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  animation: konamiScan 3.6s linear;
+}
+@keyframes konamiScan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.konami-content {
+  text-align: center;
+  position: relative;
+}
+.konami-line {
+  animation: lineIn 0.4s ease-out forwards;
+}
+.konami-line-2 {
+  animation-delay: 0.25s;
+}
+.konami-line-3 {
+  animation-delay: 0.6s;
+}
+@keyframes lineIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ───────── CVE threat-feed ticker ───────── */
+.cve-ticker-inner {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: tickerMove 55s linear infinite;
+  padding-left: 8rem;
+}
+@keyframes tickerMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.cve-row + .cve-row {
+  margin-left: 2rem;
+}
+
+/* ───────── Hex-flip stat on click ───────── */
+.hex-flip {
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+.hex-flip:hover {
+  color: #ef4444;
+}
+
+
+/* ===== per-section effects ===== */
+
+/* About: scroll-linked vertical accent line */
+.about-scroll-line {
+  position: absolute;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(239, 68, 68, 0.85) 0%,
+    rgba(239, 68, 68, 0.25) 100%
+  );
+  transform-origin: top;
+  transform: scaleY(var(--p, 0));
+  pointer-events: none;
+}
+.about-scroll-line::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -2px;
+  height: 8px;
+  background: rgba(239, 68, 68, 0.9);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px 2px rgba(239, 68, 68, 0.55);
+}
+
+/* Projects: 3D cursor-tilt card */
+.project-tilt {
+  transform-style: preserve-3d;
+  transform: perspective(1000px)
+    rotateX(var(--ry, 0deg))
+    rotateY(var(--rx, 0deg));
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
+/* Skills: chips magnetize to cursor */
+.chip-magnet {
+  transition: transform 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .scanline,
+  .binary-rain,
+  .hero-glow,
+  .reticle {
+    display: none !important;
+  }
+}
