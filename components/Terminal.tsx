@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { TerminalSquare, X } from "lucide-react";
 
+type Tone = "muted" | "accent" | "positive" | "fg";
 type Line =
   | { kind: "cmd"; text: string }
-  | { kind: "out"; text: string; tone?: "muted" | "accent" | "positive" | "fg" };
+  | { kind: "out"; text: string; tone?: Tone };
 
 const BANNER: Line[] = [
   { kind: "out", text: "╔══════════════════════════════════════════════╗", tone: "muted" },
@@ -138,7 +139,7 @@ export default function Terminal() {
 
     const [head, ...rest] = cmd.split(/\s+/);
     const arg = rest.join(" ").toLowerCase();
-    const push = (text: string, tone?: Line["tone"]) =>
+    const push = (text: string, tone?: Tone) =>
       next.push({ kind: "out", text, tone });
 
     switch (head.toLowerCase()) {
