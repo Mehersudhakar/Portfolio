@@ -35,12 +35,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 w-full pt-28 lg:pt-32 pb-28">
+        <div className="animate-fadeUp mb-8">
+          <TerminalBoot />
+        </div>
+
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-12 items-start">
           <div className="lg:col-span-3">
-            <div className="animate-fadeUp mb-8">
-              <TerminalBoot />
-            </div>
-
             <h1
               className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] animate-fadeUp opacity-0"
               style={{ animationDelay: "2.5s", animationFillMode: "both" }}
