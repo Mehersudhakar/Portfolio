@@ -1,6 +1,31 @@
 import { Github, Linkedin, Mail, Phone, Download } from "lucide-react";
 import Reveal from "./Reveal";
 
+const links = [
+  {
+    icon: Mail,
+    value: "msabbi2022@gmail.com",
+    href: "mailto:msabbi2022@gmail.com",
+  },
+  {
+    icon: Phone,
+    value: "(240) 340-0064",
+    href: "tel:+12403400064",
+  },
+  {
+    icon: Linkedin,
+    value: "/in/meher-sudhakar",
+    href: "https://linkedin.com/in/meher-sudhakar",
+    external: true,
+  },
+  {
+    icon: Github,
+    value: "@Mehersudhakar",
+    href: "https://github.com/Mehersudhakar",
+    external: true,
+  },
+];
+
 export default function Contact() {
   return (
     <section id="contact" className="py-28">
@@ -17,57 +42,31 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={180}>
           <p className="mt-4 text-muted max-w-xl">
-            I&apos;m open to offensive security, application security, and AI
-            security roles, plus selective contract engagements.
+            I&apos;m open to penetration testing, offensive security,
+            application security, and AI security roles.
           </p>
         </Reveal>
 
         <Reveal delay={260}>
-          <div className="mt-10 grid sm:grid-cols-2 gap-3 max-w-2xl">
-            <a
-              href="mailto:msabbi2022@gmail.com"
-              className="group flex items-center gap-3 border border-border rounded-lg p-4 hover:border-accent/60 transition-colors"
-            >
-              <Mail size={18} className="text-accent" />
-              <div>
-                <div className="text-xs font-mono text-muted">email</div>
-                <div className="text-sm text-fg">msabbi2022@gmail.com</div>
-              </div>
-            </a>
-            <a
-              href="tel:+12403400064"
-              className="group flex items-center gap-3 border border-border rounded-lg p-4 hover:border-accent/60 transition-colors"
-            >
-              <Phone size={18} className="text-accent" />
-              <div>
-                <div className="text-xs font-mono text-muted">phone</div>
-                <div className="text-sm text-fg">(240) 340-0064</div>
-              </div>
-            </a>
-            <a
-              href="https://linkedin.com/in/meher-sudhakar"
-              target="_blank"
-              rel="noreferrer"
-              className="group flex items-center gap-3 border border-border rounded-lg p-4 hover:border-accent/60 transition-colors"
-            >
-              <Linkedin size={18} className="text-accent" />
-              <div>
-                <div className="text-xs font-mono text-muted">linkedin</div>
-                <div className="text-sm text-fg">/in/meher-sudhakar</div>
-              </div>
-            </a>
-            <a
-              href="https://github.com/Mehersudhakar"
-              target="_blank"
-              rel="noreferrer"
-              className="group flex items-center gap-3 border border-border rounded-lg p-4 hover:border-accent/60 transition-colors"
-            >
-              <Github size={18} className="text-accent" />
-              <div>
-                <div className="text-xs font-mono text-muted">github</div>
-                <div className="text-sm text-fg">@Mehersudhakar</div>
-              </div>
-            </a>
+          <div className="mt-10 flex flex-col gap-4">
+            {links.map((l) => {
+              const Icon = l.icon;
+              return (
+                <a
+                  key={l.value}
+                  href={l.href}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noreferrer" : undefined}
+                  className="group inline-flex items-center gap-2.5 text-fg hover:text-accent transition-colors"
+                >
+                  <Icon
+                    size={18}
+                    className="text-accent group-hover:scale-110 transition-transform"
+                  />
+                  <span className="text-sm sm:text-base">{l.value}</span>
+                </a>
+              );
+            })}
           </div>
         </Reveal>
 

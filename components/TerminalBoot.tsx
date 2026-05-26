@@ -30,10 +30,14 @@ function useTyped(text: string, start: number, duration: number) {
   return { out, done };
 }
 
-export default function TerminalBoot() {
+export default function TerminalBoot({ onDone }: { onDone?: () => void }) {
   const l1 = useTyped(lines[0].text, lines[0].delay, lines[0].dur);
   const l2 = useTyped(lines[1].text, lines[1].delay, lines[1].dur);
   const l3 = useTyped(lines[2].text, lines[2].delay, lines[2].dur);
+
+  useEffect(() => {
+    if (l3.done) onDone?.();
+  }, [l3.done, onDone]);
 
   return (
     <div className="font-mono text-[11px] leading-relaxed">
@@ -66,7 +70,7 @@ export default function TerminalBoot() {
       {l2.done && (
         <div className="text-accent">
           <span>{lines[2].prompt}</span> <span>{l3.out}</span>
-          <span className="caret" />
+          {!l3.done && <span className="caret" />}
         </div>
       )}
     </div>

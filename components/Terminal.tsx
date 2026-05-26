@@ -273,7 +273,7 @@ export default function Terminal() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="open terminal"
-        className="fixed bottom-5 right-5 z-40 group inline-flex items-center gap-2 font-mono text-[11px] border border-border bg-bg/80 backdrop-blur text-muted hover:text-accent hover:border-accent px-3 py-2 rounded-md transition-colors shadow-lg"
+        className="fixed bottom-5 right-5 z-40 group hidden md:inline-flex items-center gap-2 font-mono text-[11px] border border-border bg-bg/80 backdrop-blur text-muted hover:text-accent hover:border-accent px-3 py-2 rounded-md transition-colors shadow-lg"
       >
         <TerminalSquare size={14} />
         <span className="hidden sm:inline">

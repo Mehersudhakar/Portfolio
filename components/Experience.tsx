@@ -113,12 +113,6 @@ export default function Experience() {
                     className="absolute left-0 top-2 w-4 h-4 rounded-full border-2 border-accent bg-bg hidden sm:block transition-all group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(239,68,68,0.5)]"
                     aria-hidden
                   />
-                  {r.active && (
-                    <span
-                      className="absolute left-[-2px] top-[2px] pulse-dot hidden sm:block"
-                      aria-hidden
-                    />
-                  )}
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
                     <h3 className="text-lg font-medium text-fg">
                       {r.title}{" "}

@@ -23,37 +23,35 @@ export default function Education() {
           </h2>
         </Reveal>
         <Reveal delay={100}>
-          <div className="border border-border rounded-lg p-6 sm:p-8 bg-panel/30">
-            <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded-md bg-accent/10 text-accent border border-accent/30 flex items-center justify-center shrink-0">
-                <GraduationCap size={20} />
+          <div className="flex items-start gap-4 sm:gap-5">
+            <div className="w-11 h-11 rounded-md bg-accent/10 text-accent border border-accent/30 flex items-center justify-center shrink-0">
+              <GraduationCap size={20} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="text-xl sm:text-2xl font-medium text-fg">
+                  Master of Engineering, Cybersecurity
+                </h3>
+                <span className="font-mono text-xs text-muted">
+                  Aug 2023 - May 2025
+                </span>
               </div>
-              <div className="flex-1">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-lg font-medium text-fg">
-                    Master of Engineering, Cybersecurity
-                  </h3>
-                  <span className="font-mono text-xs text-muted">
-                    Aug 2023 - May 2025
-                  </span>
+              <p className="text-sm text-muted mt-1">
+                University of Maryland, College Park
+              </p>
+              <div className="mt-6">
+                <div className="font-mono text-[11px] text-accent uppercase tracking-wider mb-3">
+                  Coursework
                 </div>
-                <p className="text-sm text-muted mt-1">
-                  University of Maryland, College Park
-                </p>
-                <div className="mt-5">
-                  <div className="font-mono text-[11px] text-accent uppercase tracking-wider mb-2">
-                    Coursework
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {coursework.map((c) => (
-                      <span
-                        key={c}
-                        className="text-xs text-fg border border-border rounded px-2.5 py-1"
-                      >
-                        {c}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {coursework.map((c) => (
+                    <span
+                      key={c}
+                      className="text-xs text-muted border border-border rounded px-2.5 py-1 hover:border-accent/50 hover:text-fg transition-colors"
+                    >
+                      {c}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

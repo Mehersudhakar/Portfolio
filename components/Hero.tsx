@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -6,11 +9,14 @@ import {
   Linkedin,
   Mail,
 } from "lucide-react";
-import BinaryRain from "./BinaryRain";
 import HexStat from "./HexStat";
 import TerminalBoot from "./TerminalBoot";
 
 export default function Hero() {
+  const [booted, setBooted] = useState(false);
+  // content reveals only after the terminal finishes typing (event-driven, not a fixed timer)
+  const reveal = booted ? "animate-fadeUp" : "";
+
   return (
     <section
       id="top"
@@ -27,23 +33,20 @@ export default function Hero() {
         }}
       />
 
-      <BinaryRain />
       <div className="absolute inset-0 grid-bg radial-fade pointer-events-none" />
       <div className="scanline" />
-      <div className="reticle hidden lg:block" style={{ top: "12%", right: "3%" }} />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 w-full pt-28 lg:pt-32 pb-28">
         <div className="animate-fadeUp mb-8">
-          <TerminalBoot />
+          <TerminalBoot onDone={() => setBooted(true)} />
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-12 items-start">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 order-2 lg:order-1">
             <h1
-              className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] opacity-0 ${reveal}`}
             >
               <span className="glitch" data-text="Meher Sudhakar">
                 Meher Sudhakar
@@ -55,18 +58,16 @@ export default function Hero() {
             </h1>
 
             <p
-              className="mt-5 font-mono text-xs sm:text-[13px] text-mutedStrong animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`mt-5 font-mono text-xs sm:text-[13px] text-mutedStrong opacity-0 ${reveal}`}
             >
               <span className="text-accent">//</span> your friendly
               neighborhood <span className="text-muted">pentester</span>
             </p>
 
             <p
-              className="mt-5 max-w-2xl text-base sm:text-lg text-muted leading-relaxed animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`mt-5 max-w-2xl text-base sm:text-lg text-muted leading-relaxed opacity-0 ${reveal}`}
             >
-              Offensive security engineer with{" "}
+              Cybersecurity professional with{" "}
               <span className="text-fg">3+ years</span> in penetration
               testing, vulnerability exploitation, and AI/LLM red teaming.
               Currently pentesting RAG-based AI applications and hardening
@@ -75,8 +76,7 @@ export default function Hero() {
             </p>
 
             <div
-              className="mt-8 flex flex-wrap items-center gap-3 animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`mt-8 flex flex-wrap items-center gap-3 opacity-0 ${reveal}`}
             >
               <a
                 href="#projects"
@@ -102,8 +102,7 @@ export default function Hero() {
             </div>
 
             <div
-              className="mt-10 flex items-center gap-5 text-muted animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`mt-10 flex items-center gap-5 text-muted opacity-0 ${reveal}`}
             >
               <a
                 href="https://github.com/Mehersudhakar"
@@ -133,8 +132,7 @@ export default function Hero() {
             </div>
 
             <div
-              className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl opacity-0 ${reveal}`}
             >
               {[
                 { to: 3, suffix: "+", v: "years experience" },
@@ -159,10 +157,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:block lg:col-span-2 lg:pt-2">
+          <div className="order-1 lg:order-2 lg:col-span-2 lg:pt-2">
             <div
-              className="relative max-w-[400px] mx-auto animate-fadeUp opacity-0"
-              style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+              className={`relative max-w-[260px] sm:max-w-[320px] lg:max-w-[400px] mx-auto opacity-0 ${reveal}`}
             >
               <div className="relative aspect-[4/5] border border-border rounded-2xl overflow-hidden bg-panel/40 hero-photo-frame">
                 <img
@@ -177,8 +174,7 @@ export default function Hero() {
       </div>
 
       <div
-        className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 animate-fadeUp opacity-0"
-        style={{ animationDelay: "2.5s", animationFillMode: "both" }}
+        className={`absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 opacity-0 ${reveal}`}
       >
         <a
           href="#about"

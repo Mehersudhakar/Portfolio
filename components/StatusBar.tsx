@@ -17,18 +17,12 @@ export default function StatusBar() {
   const [progress, setProgress] = useState(0);
   const [lat, setLat] = useState(23);
   const [uptime, setUptime] = useState(0);
-  const [sid, setSid] = useState("------");
   const [active, setActive] = useState("HOME");
-
   useEffect(() => {
-    setSid(
-      Math.floor(Math.random() * 0xffffff)
-        .toString(16)
-        .padStart(6, "0")
-        .toUpperCase()
-    );
-
-    const onScroll = () => {
+    // rAF-throttled so scrolling stays smooth on mobile (one measure per frame max)
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
       const h = document.documentElement.scrollHeight - window.innerHeight;
       const p = h > 0 ? (window.scrollY / h) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, p)));
@@ -43,8 +37,11 @@ export default function StatusBar() {
       }
       setActive(current);
     };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(measure);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    measure();
 
     const latInt = setInterval(
       () => setLat(18 + Math.floor(Math.random() * 14)),
@@ -58,6 +55,7 @@ export default function StatusBar() {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
       clearInterval(latInt);
       clearInterval(upInt);
     };
@@ -67,7 +65,7 @@ export default function StatusBar() {
   const ss = String(uptime % 60).padStart(2, "0");
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 hidden md:flex items-center gap-5 px-4 h-7 bg-panel/85 backdrop-blur border-t border-border text-[10.5px] font-mono text-muted select-none">
+    <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-5 px-4 h-7 bg-panel/85 backdrop-blur border-t border-border text-[10.5px] font-mono text-muted select-none">
       <div className="flex items-center gap-2">
         <span className="pulse-dot green" />
         <span>
@@ -93,9 +91,6 @@ export default function StatusBar() {
       </div>
 
       <div className="hidden lg:flex items-center gap-4">
-        <span>
-          SID <span className="text-fg">0x{sid}</span>
-        </span>
         <span>
           LAT{" "}
           <span className="text-fg tabular-nums">

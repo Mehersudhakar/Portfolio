@@ -67,11 +67,9 @@ export default function Nav() {
             <span className="text-accent">$</span> meher
             <span className="animate-blink text-accent">_</span>
           </a>
-          <div className="hidden sm:flex items-center gap-2 pl-4 border-l border-border font-mono text-[10px] text-muted uppercase tracking-[0.14em]">
+          <div className="flex items-center gap-2 pl-4 border-l border-border font-mono text-[10px] text-muted uppercase tracking-[0.14em]">
             <span className="pulse-dot green" style={{ width: 6, height: 6 }} />
             <span>secure</span>
-            <span className="text-mutedStrong">·</span>
-            <span className="text-muted">tls1.3</span>
           </div>
           <div className="hidden lg:flex items-center pl-3 border-l border-border font-mono text-[11px] text-mutedStrong">
             <span className="text-accent">path:</span>

@@ -49,11 +49,6 @@ export default function Footer() {
               {pad(h)}:{pad(m)}:{pad(s)}
             </span>
           </span>
-          <span className="text-mutedStrong hidden sm:inline">·</span>
-          <span className="hidden sm:inline">
-            enc:{" "}
-            <span className="text-fg">tls1.3</span>
-          </span>
         </div>
         <div>© {new Date().getFullYear()} meher sudhakar abbireddi</div>
       </div>
