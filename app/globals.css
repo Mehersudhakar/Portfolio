@@ -13,7 +13,7 @@
   --color-accent: #ef4444;
   --color-accentDim: #7f1d1d;
   --color-positive: #22c55e;
-  --grid-line: rgba(239, 68, 68, 0.05);
+  --grid-line: rgba(239, 68, 68, 0.1);
   --bg-mix: rgba(10, 10, 11, 0.7);
   --shine-overlay: rgba(255, 255, 255, 0.35);
   --card-glow-bg: rgba(17, 17, 19, 0.3);
@@ -92,7 +92,7 @@ body {
 }
 
 @keyframes gridPulse {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
 
