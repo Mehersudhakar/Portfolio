@@ -44,7 +44,7 @@ export default function Hero() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-12 items-start">
-          <div className="lg:col-span-3 order-2 lg:order-1">
+          <div className="lg:col-span-3">
             <h1
               className={`text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] opacity-0 ${reveal}`}
             >
@@ -157,7 +157,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 lg:col-span-2 lg:pt-2">
+          <div className="lg:col-span-2 lg:pt-2">
             <div
               className={`relative max-w-[260px] sm:max-w-[320px] lg:max-w-[400px] mx-auto opacity-0 ${reveal}`}
             >
