@@ -123,6 +123,13 @@ body {
   66% { transform: translate(-20%, 20%) scale(0.9); }
 }
 
+/* Mobile: freeze the orbit so the GPU doesn't re-rasterize the 48px blur each frame */
+@media (max-width: 767px) {
+  .hero-glow {
+    animation: none;
+  }
+}
+
 /* ───────── Scanline sweep ───────── */
 .scanline {
   position: absolute;

@@ -65,7 +65,7 @@ export default function StatusBar() {
   const ss = String(uptime % 60).padStart(2, "0");
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-5 px-4 h-7 bg-panel/85 backdrop-blur border-t border-border text-[10.5px] font-mono text-muted select-none">
+    <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-5 px-4 h-7 bg-panel border-t border-border text-[10.5px] font-mono text-muted select-none">
       <div className="flex items-center gap-2">
         <span className="pulse-dot green" />
         <span>
