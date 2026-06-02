@@ -19,19 +19,20 @@ export default function About() {
               remediation that engineering teams actually ship.
             </p>
             <p className="mt-5 text-muted leading-relaxed">
-              3+ years across penetration testing, offensive security,
-              vulnerability exploitation, and AI/LLM red teaming. Hands-on with
-              attack-chain construction, authentication and authorization
-              bypass, privilege escalation, lateral movement, post-exploitation,
-              source-level review for exploitation primitives, and adversarial
-              testing of production AI systems.
+              3+ years across penetration testing, vulnerability exploitation,
+              and adversarial testing of web, API, cloud, and production AI
+              systems. Build and validate end-to-end attack chains spanning
+              authentication and authorization bypass, privilege escalation,
+              lateral movement, post-exploitation, source-level review for
+              exploitation primitives, and adversarial testing of LLM and RAG
+              pipelines.
             </p>
             <p className="mt-5 text-muted leading-relaxed">
               Surfaced 30+ confirmed vulnerabilities, including a novel
               Denial-of-Wallet attack class on a production RAG pipeline, a
-              high-severity JWT lifecycle flaw on an OAuth-based multi-tenant
-              SaaS platform, and 25+ critical findings at DXC contributing to a
-              35% reduction in production incidents.
+              high-severity JWT lifecycle flaw on a multi-tenant SaaS platform,
+              and 25+ critical findings at DXC that drove a 35% reduction in
+              production incidents.
             </p>
             <p className="mt-5 text-muted leading-relaxed">
               I care about the fundamentals: understanding the target, writing

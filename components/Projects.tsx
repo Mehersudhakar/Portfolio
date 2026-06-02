@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { ExternalLink, Bot, ShieldAlert, Radar } from "lucide-react";
+import { ExternalLink, Bot, Cloud, Radar } from "lucide-react";
 import Reveal from "./Reveal";
 
 const projects = [
@@ -15,22 +15,22 @@ const projects = [
     stack: ["Python", "Nmap", "Metasploit", "sqlmap", "ffuf"],
   },
   {
-    name: "AI Red-Team Testing",
-    tagline: "Offensive harness against code-generation LLMs",
-    icon: ShieldAlert,
-    description:
-      "An offensive testing harness against AI code-generation systems. Classified hundreds of working jailbreak variants into an attack taxonomy and demonstrated systematic guardrail-bypass paths aligned to OWASP LLM Top 10. Chained successful bypasses end-to-end across direct prompt injection, indirect context injection, and multi-turn escalation, delivering each as a reproducible attack scenario with paired mitigation paths for engineering teams.",
-    highlights: ["Jailbreak taxonomy", "End-to-end bypass chains", "OWASP LLM Top 10"],
-    stack: ["LLM", "Prompt Injection", "Red Team", "Python"],
-  },
-  {
     name: "ReconX",
     tagline: "Modular reconnaissance automation framework",
     icon: Radar,
     description:
-      "A Python framework automating subdomain enumeration, port scanning, service fingerprinting, and HTTP probing across attack-surface engagements. Normalizes heterogeneous tool output into a structured schema feeding downstream analysis. Configurable scan profiles (passive, active, aggressive) and a plugin interface for new modules cut manual recon setup time across multi-service engagements while keeping per-engagement scoping flexible.",
-    highlights: ["Plugin architecture", "Passive/active/aggressive", "Structured output schema"],
-    stack: ["Python", "Nmap", "ffuf", "Subdomain Enum"],
+      "A framework automating subdomain enumeration, port scanning, service fingerprinting, and HTTP probing across attack-surface engagements. Normalizes heterogeneous tool output into a structured schema for analysis. Configurable scan profiles with Shodan and ffuf integrations, plus per-module rate limiting to evade WAF and IDS detection during early-phase recon, keeping per-engagement scoping flexible.",
+    highlights: ["Configurable scan profiles", "Shodan + ffuf integrations", "Rate-limited / WAF-aware"],
+    stack: ["Python", "Nmap", "Shodan", "ffuf"],
+  },
+  {
+    name: "Cloud-Based Healthcare Hardening",
+    tagline: "HIPAA-aligned AWS security review",
+    icon: Cloud,
+    description:
+      "Diagnosed architectural security gaps and implemented security-by-design controls across a HIPAA-aligned AWS environment, mitigating 80% of vulnerabilities and misconfigurations through risk-prioritized remediation. Refined IAM policies, enforced MFA on privileged accounts, and applied least-privilege controls per role and service, reducing excessive permissions 40% with KMS-managed encryption and CloudTrail audit logging.",
+    highlights: ["80% misconfig mitigation", "40% permission reduction", "KMS + CloudTrail"],
+    stack: ["AWS", "IAM", "KMS", "CloudTrail", "HIPAA"],
   },
 ];
 

@@ -67,11 +67,11 @@ export default function Hero() {
             <p
               className={`mt-5 max-w-2xl text-base sm:text-lg text-muted leading-relaxed opacity-0 ${reveal}`}
             >
-              Cybersecurity professional with{" "}
-              <span className="text-fg">3+ years</span> in penetration
-              testing, vulnerability exploitation, and AI/LLM red teaming.
-              Currently pentesting RAG-based AI applications and hardening
-              adversarial AI guardrails at{" "}
+              Cybersecurity engineer with{" "}
+              <span className="text-fg">3+ years</span> across penetration
+              testing, vulnerability exploitation, and adversarial testing of
+              web, API, cloud, and production AI systems. Currently pentesting
+              RAG pipelines and hardening LLM guardrails at{" "}
               <span className="text-fg">Cybertrust America</span>.
             </p>
 
