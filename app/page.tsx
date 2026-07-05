@@ -9,6 +9,7 @@ import Hero from "@/components/Hero";
 import Konami from "@/components/Konami";
 import Nav from "@/components/Nav";
 import Projects from "@/components/Projects";
+import Research from "@/components/Research";
 import ScrollTopOnLoad from "@/components/ScrollTopOnLoad";
 import SectionGlitch from "@/components/SectionGlitch";
 import Skills from "@/components/Skills";
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <Research />
         <Projects />
         <Skills />
         <Certifications />

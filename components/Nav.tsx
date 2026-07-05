@@ -6,6 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 const links = [
   { href: "#about", label: "about" },
   { href: "#experience", label: "experience" },
+  { href: "#research", label: "cves" },
   { href: "#projects", label: "projects" },
   { href: "#skills", label: "skills" },
   { href: "#certifications", label: "certs" },
@@ -15,6 +16,7 @@ const links = [
 const CRUMB: Record<string, string> = {
   "#about": "~/about",
   "#experience": "~/experience",
+  "#research": "~/cve-research",
   "#projects": "~/projects",
   "#skills": "~/skills",
   "#certifications": "~/certs",

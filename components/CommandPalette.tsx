@@ -3,6 +3,7 @@
 import {
   ArrowRight,
   Briefcase,
+  Bug,
   Code2,
   Download,
   FileText,
@@ -67,6 +68,15 @@ export default function CommandPalette() {
         icon: Briefcase,
         keywords: ["work", "jobs"],
         run: () => scrollToId("experience"),
+      },
+      {
+        id: "go-research",
+        label: "Go to CVE Research",
+        hint: "#research",
+        group: "navigate",
+        icon: Bug,
+        keywords: ["cve", "vulnerabilities", "disclosures", "security research"],
+        run: () => scrollToId("research"),
       },
       {
         id: "go-projects",
