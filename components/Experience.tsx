@@ -15,9 +15,8 @@ type Role = {
 const roles: Role[] = [
   {
     company: "Cybertrust America",
-    title: "Cybersecurity Engineer",
-    period: "Jun 2025 - Present",
-    active: true,
+    title: "Cybersecurity Analyst - Penetration Tester",
+    period: "Sep 2025 - Jun 2026",
     bullets: [
       "Strengthened a multi-tenant SaaS platform's session security before SOC 2 attestation by surfacing a high-severity JWT lifecycle flaw that survived logout, confirmed by replaying tokens in Burp Suite.",
       "Discovered 4+ high-severity findings in a production RAG-based AI application, including a novel Denial-of-Wallet attack class and LLM prompt injection, using Burp Suite and custom Python exploit scripts.",
@@ -31,7 +30,7 @@ const roles: Role[] = [
   },
   {
     company: "Handshake AI",
-    title: "AI Red Team Engineer (Contract)",
+    title: "AI Trainer - Cybersecurity Expert",
     period: "Nov 2025 - Mar 2026",
     bullets: [
       "Discovered exploitable model behavior across production AI surfaces through indirect prompt injection, refusal-bypass, and context-leakage attacks scripted in Python over layered multi-turn prompts.",

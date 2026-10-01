@@ -70,8 +70,8 @@ export default function Hero() {
               Cybersecurity engineer with{" "}
               <span className="text-fg">3+ years</span> across penetration
               testing, vulnerability exploitation, and adversarial testing of
-              web, API, cloud, and production AI systems. Currently pentesting
-              RAG pipelines and hardening LLM guardrails at{" "}
+              web, API, cloud, and production AI systems. Performed security
+              engagements on RAG systems and hardened LLM guardrails at{" "}
               <span className="text-fg">Cybertrust America</span>.
             </p>
 

@@ -14,9 +14,10 @@ export default function About() {
           <Reveal className="md:col-span-3 relative">
             <AboutScrollLine />
             <p className="text-lg sm:text-xl text-fg leading-relaxed">
-              I find exploitable vulnerabilities through manual,
-              adversary-driven testing, then translate them into actionable
-              remediation that engineering teams actually ship.
+              I find exploitable vulnerabilities across web, cloud, and AI
+              security through manual, adversary-driven testing, then translate
+              them into actionable remediation that engineering teams actually
+              ship.
             </p>
             <p className="mt-5 text-muted leading-relaxed">
               3+ years across penetration testing, vulnerability exploitation,
