@@ -49,8 +49,8 @@ engineering teams actually ship.
 
 currently: pentesting RAG/LLM apps · adversarial guardrail research · pursuing OSCP`,
   experience: `ENG-004 · Cybertrust America · Cybersecurity Analyst - Penetration Tester · Sep 2025 - Jun 2026
-ENG-003 · UMD College Park   · Security Analyst                           · Aug 2024 - May 2025
-ENG-002 · DXC Technology     · Security Engineer                          · Jun 2022 - Aug 2023
+ENG-003 · UMD College Park   · Red Team Analyst                           · Aug 2024 - May 2025
+ENG-002 · DXC Technology     · Offensive Security Engineer                · Jun 2022 - Aug 2023
 ENG-001 · Verzeo             · Web App Pentester                          · Oct 2021 - Jun 2022`,
   projects: `→ Pentigo                   · Autonomous AI Pentest Platform   [Multi-agent / Python]
 → AI Red-Team Testing       · Code-Gen LLM Jailbreak Harness   [LLM / Red Team]

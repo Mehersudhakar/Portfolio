@@ -30,7 +30,7 @@ const roles: Role[] = [
   },
   {
     company: "Handshake AI",
-    title: "AI Trainer - Cybersecurity Expert",
+    title: "AI Trainer - Cybersecurity Expert (Contract)",
     period: "Nov 2025 - Mar 2026",
     bullets: [
       "Discovered exploitable model behavior across production AI surfaces through indirect prompt injection, refusal-bypass, and context-leakage attacks scripted in Python over layered multi-turn prompts.",
@@ -42,7 +42,7 @@ const roles: Role[] = [
   },
   {
     company: "University of Maryland, College Park",
-    title: "Offensive Security Analyst",
+    title: "Red Team Analyst",
     period: "Aug 2024 - May 2025",
     bullets: [
       "Exploited injection, broken authentication, and access-control flaws on production web apps through authenticated and unauthenticated pentests, with working payloads in Burp Suite and sqlmap for owners.",
@@ -54,7 +54,7 @@ const roles: Role[] = [
   },
   {
     company: "DXC Technology",
-    title: "Security Engineer",
+    title: "Offensive Security Engineer",
     period: "Jun 2022 - Aug 2023",
     bullets: [
       "Discovered 25+ critical vulnerabilities across web, mobile, and API clients, spanning injection, broken access control (IDOR), and authentication bypass, contributing to a 35% reduction in production incidents.",
