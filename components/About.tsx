@@ -47,11 +47,7 @@ export default function About() {
               <div className="text-muted mb-3">// currently</div>
               <ul className="space-y-2 text-fg">
                 <li>
-                  <span className="text-accent">→</span> Pentesting RAG/LLM
-                  applications
-                </li>
-                <li>
-                  <span className="text-accent">→</span> Adversarial AI guardrail
+                  <span className="text-accent">→</span> Conducting security
                   research
                 </li>
                 <li>
