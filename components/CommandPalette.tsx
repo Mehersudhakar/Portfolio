@@ -101,7 +101,7 @@ export default function CommandPalette() {
         hint: "#certifications",
         group: "navigate",
         icon: ShieldCheck,
-        keywords: ["certs", "oscp", "ceh"],
+        keywords: ["certs", "oscp", "ejpt", "sec+"],
         run: () => scrollToId("certifications"),
       },
       {

@@ -62,7 +62,6 @@ lang:       Python · JavaScript · PowerShell · Bash · C · C++ · SQL
 cloud:      AWS (IAM, S3, EC2, Lambda) · Docker · MITRE ATT&CK · NIST CSF · SOC 2`,
   certs: `[ in progress ] OSCP    · Offensive Security
 [ verified    ] eJPT    · INE
-[ verified    ] CEH     · EC-Council
 [ verified    ] Sec+    · CompTIA`,
   education: `M.Eng. Cybersecurity · University of Maryland, College Park
 Aug 2023 - May 2025`,
@@ -151,7 +150,7 @@ export default function Terminal() {
           "meher sudhakar abbireddi · offensive security engineer · 3+ yrs",
           "fg"
         );
-        push("certs: CEH · eJPT · Sec+ · OSCP(in progress)", "muted");
+        push("certs: eJPT · Sec+ · OSCP(in progress)", "muted");
         break;
       case "ls":
         push(SECTIONS.map((s) => `./${s}`).join("  "), "accent");

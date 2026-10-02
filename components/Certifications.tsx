@@ -21,12 +21,6 @@ const certs = [
     status: "Certified",
     hash: "0xc20b",
   },
-  {
-    name: "CEH · Certified Ethical Hacker",
-    issuer: "EC-Council",
-    status: "Certified",
-    hash: "0x71da",
-  },
 ];
 
 export default function Certifications() {
