@@ -14,6 +14,19 @@ type Role = {
 
 const roles: Role[] = [
   {
+    company: "SM Interface Systems LLC",
+    title: "Cybersecurity Analyst",
+    period: "Jun 2026 - Present",
+    active: true,
+    bullets: [
+      "Uncovered 50+ vulnerabilities across 20+ penetration testing engagements over web, mobile, network, and AWS targets with Nmap enumeration, flagging IAM misconfigurations, each CVSS-scored for remediation.",
+      "Escalated an enterprise Active Directory to Domain Admin, relaying captured credentials into misconfigured AD CS certificate templates with Certipy and pivoting across hosts to prove full domain takeover.",
+      "Reduced 100+ Nessus finding validations to under 10 minutes with Python automation that maps each finding to an exploit-verification command, captures proof of exploit, and fails over on unreachable hosts.",
+      "Chained broken access control with input-validation defects into remote code execution on production web applications, reproducing each exploit before handing engineering risk-ranked reproduction steps.",
+    ],
+    tags: ["Active Directory", "AD CS", "Certipy", "Nessus", "AWS IAM", "Nmap", "Python"],
+  },
+  {
     company: "Cybertrust America",
     title: "Cybersecurity Analyst - Penetration Tester",
     period: "Sep 2025 - Jun 2026",
@@ -41,20 +54,8 @@ const roles: Role[] = [
     tags: ["AI Red Team", "Prompt Injection", "MITRE ATLAS", "OWASP LLM Top 10", "Python"],
   },
   {
-    company: "University of Maryland, College Park",
-    title: "Red Team Analyst",
-    period: "Aug 2024 - May 2025",
-    bullets: [
-      "Exploited injection, broken authentication, and access-control flaws on production web apps through authenticated and unauthenticated pentests, with working payloads in Burp Suite and sqlmap for owners.",
-      "Escalated access across enterprise Linux and Windows infrastructure by chaining service misconfigurations and credential exposure into multi-host pivot paths using Impacket and CrackMapExec.",
-      "Uncovered cloud workload risk across public-bucket exposure, IAM misconfiguration, and over-scoped roles by auditing IAM policies and CloudTrail logs in production AWS, routing fixes by exploitability.",
-      "Accelerated recurring engagements by building Python automation for attack-surface enumeration and exploit validation, cutting per-engagement setup time and standardizing reporting output.",
-    ],
-    tags: ["Web Pentest", "Linux/Windows", "AWS IAM", "Impacket", "CrackMapExec", "Python"],
-  },
-  {
     company: "DXC Technology",
-    title: "Offensive Security Engineer",
+    title: "Security Engineer",
     period: "Jun 2022 - Aug 2023",
     bullets: [
       "Discovered 25+ critical vulnerabilities across web, mobile, and API clients, spanning injection, broken access control (IDOR), and authentication bypass, contributing to a 35% reduction in production incidents.",
