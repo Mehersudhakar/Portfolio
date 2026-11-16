@@ -20,11 +20,11 @@ const roles: Role[] = [
     active: true,
     bullets: [
       "Uncovered 50+ vulnerabilities across 20+ penetration testing engagements over web, mobile, network, and AWS targets with Nmap enumeration, flagging IAM misconfigurations, each CVSS-scored for remediation.",
-      "Escalated an enterprise Active Directory to Domain Admin, relaying captured credentials into misconfigured AD CS certificate templates with Certipy and pivoting across hosts to prove full domain takeover.",
       "Reduced 100+ Nessus finding validations to under 10 minutes with Python automation that maps each finding to an exploit-verification command, captures proof of exploit, and fails over on unreachable hosts.",
-      "Chained broken access control with input-validation defects into remote code execution on production web applications, reproducing each exploit before handing engineering risk-ranked reproduction steps.",
+      "Ran 5+ red-team engagements of offensive phishing and social engineering, crafting credential-harvesting lures to exploit the human attack surface, then translating results into detection and awareness improvements.",
+      "Triaged 30+ reported findings as a peer reviewer via CVSS-based risk assessment, reproducing each in Burp Suite to confirm exploitability and translating security and privacy requirements into actionable engineering technical requirements.",
     ],
-    tags: ["Active Directory", "AD CS", "Certipy", "Nessus", "AWS IAM", "Nmap", "Python"],
+    tags: ["Phishing/SE", "Burp Suite", "Nessus", "AWS IAM", "Nmap", "Python"],
   },
   {
     company: "Cybertrust America",
